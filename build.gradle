@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'org.springframework.boot' version '3.4.3'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.redis'
+version = '0.0.1-SNAPSHOT'
+
+//멀티모듈에서 사용
+//bootJar 생성 안하고 jar 생성
+bootJar {enabled = false}
+jar {enabled = true}
+
+configurations {compileOnly {extendsFrom annotationProcessor}}
+
+tasks.withType(JavaCompile).configureEach {options.compilerArgs.add("-parameters")}
+
+
+// 모든모듈 Gradle 종속성 묶음 (=subprojects)
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    java {toolchain {languageVersion = JavaLanguageVersion.of(21)}}
+
+    repositories {mavenCentral()}
+
+    dependencies {
+        //spring-boot-devtools
+        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        //lombok
+        implementation 'org.projectlombok:lombok:1.18.30'
+        annotationProcessor 'org.projectlombok:lombok:1.18.30'
+        // JUnit 4 의존성 추가(정말정말중요)
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+        //h2
+        testImplementation 'com.h2database:h2'
+        //spring-boot-starter
+        implementation 'org.springframework.boot:spring-boot-starter'
+        //spring-context
+        implementation 'org.springframework:spring-context:6.1.14'
+        //Spring Web
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        //JPA
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        //MySQL
+        runtimeOnly 'com.mysql:mysql-connector-j'
+
+
+        //spring-boot-starter test
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        //h2 test
+        testImplementation 'com.h2database:h2'
+    }// dependencies END
+
+    test {useJUnitPlatform()}
+
+}// allprojects END
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+rootProject.name = 'multi-module'
+
+include 'domain'
+include 'domain:module-domain-user'
+findProject(':domain:module-domain-user')?.name = 'module-domain-user'
+
+
+include 'common'
+
+
+include 'infra'
+include 'infra:module-infra-photo'
+findProject(':infra:module-infra-photo')?.name = 'module-infra-photo'
+
+
+include 'server'
+include 'server:module-server-redis'
+findProject(':server:module-server-redis')?.name = 'module-server-redis'
+
