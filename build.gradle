@@ -35,26 +35,27 @@ allprojects {
         //lombok
         implementation 'org.projectlombok:lombok:1.18.30'
         annotationProcessor 'org.projectlombok:lombok:1.18.30'
-        // JUnit 4 의존성 추가(정말정말중요)
-        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-        //h2
-        testImplementation 'com.h2database:h2'
-        //spring-boot-starter
-        implementation 'org.springframework.boot:spring-boot-starter'
         //spring-context
         implementation 'org.springframework:spring-context:6.1.14'
+        //spring-boot-starter
+        implementation 'org.springframework.boot:spring-boot-starter'
         //Spring Web
         implementation 'org.springframework.boot:spring-boot-starter-web'
-        //JPA
+        //JPA data
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        //캐시
+        implementation 'org.springframework.boot:spring-boot-starter-cache'
         //MySQL
         runtimeOnly 'com.mysql:mysql-connector-j'
-
+        //카페인 캐시(만료 처리 쉬움,redis 같은 외부 캐시까지 쓰기 부담스러울 때 사용)
+        implementation 'com.github.ben-manes.caffeine:caffeine'
 
         //spring-boot-starter test
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         //h2 test
         testImplementation 'com.h2database:h2'
+        // JUnit 4 의존성 추가(정말정말중요)
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     }// dependencies END
 
     test {useJUnitPlatform()}

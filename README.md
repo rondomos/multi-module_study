@@ -14,7 +14,7 @@
          |- event
          |- exception
          |- utils
-       |- module-domain
+       |- domain
          |-module-domain-user
           |- user.java
          |-module-domain-seat

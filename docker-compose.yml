@@ -1,0 +1,52 @@
+services:
+  mysql:
+    image: mysql:8.0
+    #container_name: redis_2nd-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "dlsxpffl8080@"
+      MYSQL_DATABASE: "redisstudy"
+      #MYSQL_USER: "root"
+      #MYSQL_PASSWORD: "dlsxpffl8080"
+    command:
+      - --skip-character-set-client-handshake
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    networks:
+      - my-network
+    ports:
+      - "3306:3306"
+
+  #레디스
+  redis:
+    image: redis:6.2        # Redis 이미지
+    container_name: reids_2nd-radis-container
+    restart: always
+    ports:
+      - "6379:6379"         # Redis 기본 포트
+    volumes:
+      - ./data/redis:/data  # Redis 데이터 볼륨
+    command: redis-server --save 60 1 --loglevel warning
+    networks:
+      - my-network
+  
+  #Grafana->레디스 모니터링 시각화툴
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      - GF_INSTALL_PLUGINS=redis-datasource
+    restart: always
+    ports:
+      - 3000:3000
+
+#레디스 네트워크
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
+  redis-data:
+    driver: local
+

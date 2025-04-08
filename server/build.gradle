@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.redis'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+bootJar {enabled = false}
+
+test {useJUnitPlatform()
+}
