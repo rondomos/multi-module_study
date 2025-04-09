@@ -1,15 +1,17 @@
 rootProject.name = 'multi-module'
 
-include 'domain'
+include 'module-domain'
 
-include 'common'
+include 'module-common'
 
-include 'infra'
-include 'infra:module-infra-photo'
+include 'module-infra'
+include 'module-infra:module-infra-redis'
+
+include 'module-api'
+
+include 'module-batch'
 
 
-include 'server'
-include 'server:module-server-redis'
 
-include 'api'
+
 

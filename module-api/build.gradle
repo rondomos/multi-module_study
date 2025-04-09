@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+group = 'com.redis'
+version = '0.0.1-SNAPSHOT'
+
+repositories {mavenCentral()}
+
+dependencies {
+    implementation project(':module-common')
+    implementation project(':module-domain')
+    implementation project(':module-infra')
+
+}
+test {useJUnitPlatform()}

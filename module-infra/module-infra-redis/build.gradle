@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+group = 'com.redis'
+version = '0.0.1-SNAPSHOT'
+
+bootJar {enabled = false}
+jar {enabled = true}
+
+repositories {mavenCentral()}
+
+dependencies {
+    implementation project(':module-common')
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis' //레디스
+    implementation 'org.redisson:redisson-spring-boot-starter:3.27.0' // 레디션 분산락
+
+}
+
+test {useJUnitPlatform()}

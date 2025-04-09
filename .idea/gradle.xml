@@ -10,13 +10,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/api" />
-            <option value="$PROJECT_DIR$/common" />
-            <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/infra" />
-            <option value="$PROJECT_DIR$/infra/module-infra-photo" />
-            <option value="$PROJECT_DIR$/server" />
-            <option value="$PROJECT_DIR$/server/module-server-redis" />
+            <option value="$PROJECT_DIR$/module-api" />
+            <option value="$PROJECT_DIR$/module-batch" />
+            <option value="$PROJECT_DIR$/module-common" />
+            <option value="$PROJECT_DIR$/module-domain" />
+            <option value="$PROJECT_DIR$/module-infra" />
+            <option value="$PROJECT_DIR$/module-infra/module-infra-redis" />
           </set>
         </option>
       </GradleProjectSettings>

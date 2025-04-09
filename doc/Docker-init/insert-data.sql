@@ -67,3 +67,5 @@ VALUES
 ALTER TABLE movie_seat ADD COLUMN is_reserved BOOLEAN NOT NULL DEFAULT FALSE;
 ALTER TABLE movie_seat ADD COLUMN seatCol varchar(100);
 ALTER TABLE movie_seat ADD COLUMN seatRow varchar(100);
+ALTER TABLE movie_info add column description text;
+ALTER TABLE movie_info ADD FULLTEXT (description);
