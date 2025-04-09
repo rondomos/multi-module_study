@@ -2,12 +2,15 @@ package com.redis.domain.model.reservation.entity;
 
 import com.redis.domain.config.BaseEntity;
 import com.redis.domain.model.screen.entity.Screen;
+import com.redis.domain.model.seat.entity.MovieSeat;
+import com.redis.domain.model.seat.entity.Seat;
 import com.redis.domain.model.user.entity.MovieUser;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -32,7 +35,8 @@ public class Reservation extends BaseEntity {
     @JoinColumn(name = "movieUser")
     private MovieUser movieUser;
 
-
+    @ManyToMany
+    private List<MovieSeat> seats;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "screen")

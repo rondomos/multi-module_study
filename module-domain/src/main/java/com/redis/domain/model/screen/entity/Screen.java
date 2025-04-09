@@ -28,8 +28,9 @@ public class Screen extends BaseEntity {
     private LocalDateTime modifyDate; //수정일
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movieInfo")
-    private MovieInfo movieInfo;
+
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "movieInfo")
+    //private MovieInfo movieInfo;
 
 }

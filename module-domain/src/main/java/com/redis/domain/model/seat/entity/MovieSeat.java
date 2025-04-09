@@ -20,11 +20,8 @@ public class MovieSeat {
     private String seatLv;
     private Boolean isReserved;
 
-    private String seatCol;
-    private String seatRow;
-
-    @Version // Optimistic Lock 버전 필드
-    private Integer version;
+    private String seatCol; //좌석 위치 열
+    private String seatRow; //좌석 위치 행
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "screen")
