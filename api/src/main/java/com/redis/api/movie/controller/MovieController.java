@@ -15,13 +15,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/movie")
 public class MovieController {
 
     private final MovieService movieService;
 
 
-    @GetMapping("movie/searchMovieNm")
+    @GetMapping("noQ/searchMovieNm")
     public BaseResponse<List<MovieInfo>> findByMovieNm(
             @RequestParam(value = "movieNm", required = false) String movieNm
     ) {
@@ -29,13 +29,25 @@ public class MovieController {
         return new BaseResponse<>(response);
     }
 
-    @GetMapping("movie/searchGenre")
+    @GetMapping("noQ/searchGenre")
     public BaseResponse<List<Genre>> findByGenreCd(
             @RequestParam(value = "genre", required = false) Genre genre
     ) {
         List<Genre> response = movieService.findByGenreCd(genre);
         return new BaseResponse<>(response);
     }
+
+
+    //QueryDSL 사용한 영화이름,영화장르 파라미터 받아 검색받기
+    @GetMapping("yesQ/findBymovieNmAndgenreCd")
+    public BaseResponse<List<MovieInfo>> findBymovieNmAndgenreCd(
+            @RequestParam(value = "movieNm", required = false) String movieNm,
+            @RequestParam(value = "genre", required = false) String genre
+    ) {
+        List<MovieInfo> response = movieService.findBymovieNmAndgenreCd(movieNm,genre);
+        return new BaseResponse<>(response);
+    }
+    
 
 
 }

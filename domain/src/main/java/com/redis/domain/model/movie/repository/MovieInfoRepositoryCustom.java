@@ -1,10 +1,7 @@
 package com.redis.domain.model.movie.repository;
 
-import com.redis.domain.model.movie.entity.Genre;
-import com.redis.domain.model.movie.entity.MovieInfo;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
+import com.redis.domain.model.movie.entity.MovieInfo;
 
 /*
 ** JpaRepository가 기존에 있을 때 같이 사용하기 위한 방법
@@ -17,6 +14,9 @@ public interface MovieInfoRepositoryCustom {
     //영화이름 찾기
     List<MovieInfo> findByMovieNm(String movieNm);
     //영화장르 찾기
-    List<Genre> findByGenreCd(Genre genreCd);
+    List<MovieInfo> findByGenreCd(String genreCd);
+    //영화이름과 영화장르 파라미터 두개
+    List<MovieInfo> findBymovieNmAndgenreCd(String movieNm,String genreCd);
+
 
 }

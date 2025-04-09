@@ -1,0 +1,1 @@
+GET localhost:8080/movie/yesQ/findBymovieNmAndgenreCd?movieNm=어벤져스&genre=액션
